@@ -10,10 +10,10 @@ import Foundation
 struct StarshipResponse: Codable {
     let count: Int?
     let next: String?
-    let results: [Result]?
+    let results: [Starship]?
 }
 
-struct Result: Codable {
+struct Starship: Codable {
     let name, model, manufacturer, costInCredits: String?
     let length, maxAtmospheringSpeed, crew, passengers: String?
     let cargoCapacity, consumables, hyperdriveRating, mglt: String?

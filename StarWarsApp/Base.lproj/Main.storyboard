@@ -16,8 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fz8-Hl-4c6">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="SecondaryColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fz8-Hl-4c6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Dyj-uK-fPX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fz8-Hl-4c6" secondAttribute="bottom" id="Jy8-vT-RNd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fz8-Hl-4c6" secondAttribute="trailing" id="ThP-Tx-8Ap"/>
+                            <constraint firstItem="fz8-Hl-4c6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vGo-KA-a7f"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kXd-zf-jmV"/>
                 </viewController>
@@ -28,14 +41,30 @@
         <!--Starships-->
         <scene sceneID="Iqo-mS-2rl">
             <objects>
-                <viewController id="VOb-a2-PWn" sceneMemberID="viewController">
+                <viewController id="VOb-a2-PWn" customClass="StarshipsViewController" customModule="StarWarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLj-zx-yiR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nlI-fk-gVj">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ttm-24-cYh"/>
-                        <color key="backgroundColor" name="SecondaryColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nlI-fk-gVj" firstAttribute="leading" secondItem="Ttm-24-cYh" secondAttribute="leading" id="Mt3-xf-UHX"/>
+                            <constraint firstItem="Ttm-24-cYh" firstAttribute="trailing" secondItem="nlI-fk-gVj" secondAttribute="trailing" id="YGO-oH-eac"/>
+                            <constraint firstItem="Ttm-24-cYh" firstAttribute="bottom" secondItem="nlI-fk-gVj" secondAttribute="bottom" id="hhs-lW-fWL"/>
+                            <constraint firstItem="nlI-fk-gVj" firstAttribute="top" secondItem="Ttm-24-cYh" secondAttribute="top" id="udV-uI-PJo"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Starships" image="square.split.2x1.fill" catalog="system" id="EqQ-cG-NUL"/>
+                    <connections>
+                        <outlet property="starshipsTable" destination="nlI-fk-gVj" id="Cwo-2D-KGx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5H-ZI-Pu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,9 +76,11 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eyv-r5-t0O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nA7-t2-NI5" customClass="CustomTabBar" customModule="StarWarsApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="PrimaryColor"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="MainColor"/>
+                        <color key="selectedImageTintColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="2SG-5K-xJa" kind="relationship" relationship="viewControllers" id="vjo-Xj-cUj"/>
@@ -83,11 +114,14 @@
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.split.2x1.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="BackgroundColor">
+            <color red="0.7686274509803922" green="0.7803921568627451" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.396078431372549" green="0.41960784313725491" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryColor">
             <color red="0.39823422656451346" green="0.42182104233816775" blue="0.85308906555175779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryColor">
-            <color red="0.72810500080502738" green="0.74339520600350173" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -10,6 +10,11 @@
 		990487A0239D87D7185720B4 /* Pods_StarWarsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07922648DF7AA9FEB86983BD /* Pods_StarWarsApp.framework */; };
 		9F61D1722C58D44900C7191A /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61D1712C58D44900C7191A /* Starship.swift */; };
 		9F61D1762C58D50200C7191A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61D1752C58D50200C7191A /* CustomTabBar.swift */; };
+		9F61D17D2C58DF0C00C7191A /* StarWarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61D17B2C58DF0C00C7191A /* StarWarTableCell.swift */; };
+		9F61D17E2C58DF0C00C7191A /* StarWarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F61D17C2C58DF0C00C7191A /* StarWarTableCell.xib */; };
+		9F9EA16E2C58F70300A48DA4 /* StarshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EA16D2C58F70300A48DA4 /* StarshipsViewController.swift */; };
+		9F9EA1702C58F72F00A48DA4 /* StarshipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EA16F2C58F72F00A48DA4 /* StarshipsViewModel.swift */; };
+		9F9EA1732C58FBAD00A48DA4 /* UITableView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EA1722C58FBAD00A48DA4 /* UITableView+extension.swift */; };
 		9FB10B9A2C58C13D00FDC6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */; };
 		9FB10B9C2C58C13D00FDC6E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */; };
 		9FB10B9E2C58C13D00FDC6E2 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B9D2C58C13D00FDC6E2 /* CharactersViewController.swift */; };
@@ -24,6 +29,11 @@
 		07922648DF7AA9FEB86983BD /* Pods_StarWarsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F61D1712C58D44900C7191A /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		9F61D1752C58D50200C7191A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		9F61D17B2C58DF0C00C7191A /* StarWarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarTableCell.swift; sourceTree = "<group>"; };
+		9F61D17C2C58DF0C00C7191A /* StarWarTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarWarTableCell.xib; sourceTree = "<group>"; };
+		9F9EA16D2C58F70300A48DA4 /* StarshipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsViewController.swift; sourceTree = "<group>"; };
+		9F9EA16F2C58F72F00A48DA4 /* StarshipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsViewModel.swift; sourceTree = "<group>"; };
+		9F9EA1722C58FBAD00A48DA4 /* UITableView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+extension.swift"; sourceTree = "<group>"; };
 		9FB10B962C58C13D00FDC6E2 /* StarWarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +63,7 @@
 		9F61D1732C58D4D000C7191A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9F9EA1712C58FB7800A48DA4 /* extensions */,
 				9F61D1742C58D4DA00C7191A /* LottieAnimations */,
 				9F61D1752C58D50200C7191A /* CustomTabBar.swift */,
 			);
@@ -64,6 +75,47 @@
 			children = (
 			);
 			path = LottieAnimations;
+			sourceTree = "<group>";
+		};
+		9F61D1772C58DE8300C7191A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EA16F2C58F72F00A48DA4 /* StarshipsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9F61D1782C58DE8D00C7191A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EA16D2C58F70300A48DA4 /* StarshipsViewController.swift */,
+				9F61D17B2C58DF0C00C7191A /* StarWarTableCell.swift */,
+				9F61D17C2C58DF0C00C7191A /* StarWarTableCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9F61D1792C58DE9400C7191A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9F61D17A2C58DE9D00C7191A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FB10B9D2C58C13D00FDC6E2 /* CharactersViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9F9EA1712C58FB7800A48DA4 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EA1722C58FBAD00A48DA4 /* UITableView+extension.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		9FB10B8D2C58C13D00FDC6E2 = {
@@ -94,7 +146,6 @@
 				9FB10BB02C58C16A00FDC6E2 /* Model */,
 				9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */,
 				9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */,
-				9FB10B9D2C58C13D00FDC6E2 /* CharactersViewController.swift */,
 				9FB10B9F2C58C13D00FDC6E2 /* Main.storyboard */,
 				9FB10BA52C58C13F00FDC6E2 /* Assets.xcassets */,
 				9FB10BA72C58C13F00FDC6E2 /* LaunchScreen.storyboard */,
@@ -123,6 +174,8 @@
 		9FB10BB22C58C18000FDC6E2 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				9F61D17A2C58DE9D00C7191A /* View */,
+				9F61D1792C58DE9400C7191A /* ViewModel */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -130,6 +183,8 @@
 		9FB10BB32C58C19500FDC6E2 /* Starships */ = {
 			isa = PBXGroup;
 			children = (
+				9F61D1782C58DE8D00C7191A /* View */,
+				9F61D1772C58DE8300C7191A /* ViewModel */,
 			);
 			path = Starships;
 			sourceTree = "<group>";
@@ -220,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FB10BA92C58C13F00FDC6E2 /* LaunchScreen.storyboard in Resources */,
+				9F61D17E2C58DF0C00C7191A /* StarWarTableCell.xib in Resources */,
 				9FB10BA62C58C13F00FDC6E2 /* Assets.xcassets in Resources */,
 				9FB10BA12C58C13D00FDC6E2 /* Main.storyboard in Resources */,
 			);
@@ -274,11 +330,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9EA16E2C58F70300A48DA4 /* StarshipsViewController.swift in Sources */,
 				9FB10BB62C58C1BA00FDC6E2 /* NetworkService.swift in Sources */,
 				9FB10BA42C58C13D00FDC6E2 /* StarWarsApp.xcdatamodeld in Sources */,
 				9F61D1762C58D50200C7191A /* CustomTabBar.swift in Sources */,
+				9F9EA1702C58F72F00A48DA4 /* StarshipsViewModel.swift in Sources */,
 				9FB10B9E2C58C13D00FDC6E2 /* CharactersViewController.swift in Sources */,
+				9F9EA1732C58FBAD00A48DA4 /* UITableView+extension.swift in Sources */,
 				9F61D1722C58D44900C7191A /* Starship.swift in Sources */,
+				9F61D17D2C58DF0C00C7191A /* StarWarTableCell.swift in Sources */,
 				9FB10B9A2C58C13D00FDC6E2 /* AppDelegate.swift in Sources */,
 				9FB10B9C2C58C13D00FDC6E2 /* SceneDelegate.swift in Sources */,
 			);

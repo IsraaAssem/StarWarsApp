@@ -9,15 +9,19 @@ import UIKit
 
 class StarWarTableCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var cellBackgroundView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.cellBackgroundView.layer.cornerRadius=10
+        self.cellBackgroundView.layer.borderColor=UIColor(named: "MainColor")?.cgColor
+        self.cellBackgroundView.layer.borderWidth=1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }
