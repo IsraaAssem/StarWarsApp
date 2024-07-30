@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990487A0239D87D7185720B4 /* Pods_StarWarsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07922648DF7AA9FEB86983BD /* Pods_StarWarsApp.framework */; };
 		9FB10B9A2C58C13D00FDC6E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */; };
 		9FB10B9C2C58C13D00FDC6E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */; };
 		9FB10B9E2C58C13D00FDC6E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10B9D2C58C13D00FDC6E2 /* ViewController.swift */; };
@@ -14,9 +15,11 @@
 		9FB10BA42C58C13D00FDC6E2 /* StarWarsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10BA22C58C13D00FDC6E2 /* StarWarsApp.xcdatamodeld */; };
 		9FB10BA62C58C13F00FDC6E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FB10BA52C58C13F00FDC6E2 /* Assets.xcassets */; };
 		9FB10BA92C58C13F00FDC6E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FB10BA72C58C13F00FDC6E2 /* LaunchScreen.storyboard */; };
+		9FB10BB62C58C1BA00FDC6E2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB10BB52C58C1BA00FDC6E2 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07922648DF7AA9FEB86983BD /* Pods_StarWarsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB10B962C58C13D00FDC6E2 /* StarWarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,9 @@
 		9FB10BA52C58C13F00FDC6E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FB10BA82C58C13F00FDC6E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FB10BAA2C58C13F00FDC6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FB10BB52C58C1BA00FDC6E2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		AA936EC47CC85EA2B32F2350 /* Pods-StarWarsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsApp.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsApp/Pods-StarWarsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B3C657C748714389884EF7C1 /* Pods-StarWarsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsApp.release.xcconfig"; path = "Target Support Files/Pods-StarWarsApp/Pods-StarWarsApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				990487A0239D87D7185720B4 /* Pods_StarWarsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +51,8 @@
 			children = (
 				9FB10B982C58C13D00FDC6E2 /* StarWarsApp */,
 				9FB10B972C58C13D00FDC6E2 /* Products */,
+				C5E5E1EAE06C6AF8EC3C5122 /* Pods */,
+				ECA37918E7149968AE52665B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +67,10 @@
 		9FB10B982C58C13D00FDC6E2 /* StarWarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				9FB10BB32C58C19500FDC6E2 /* Starships */,
+				9FB10BB22C58C18000FDC6E2 /* Characters */,
+				9FB10BB12C58C17100FDC6E2 /* Service */,
+				9FB10BB02C58C16A00FDC6E2 /* Model */,
 				9FB10B992C58C13D00FDC6E2 /* AppDelegate.swift */,
 				9FB10B9B2C58C13D00FDC6E2 /* SceneDelegate.swift */,
 				9FB10B9D2C58C13D00FDC6E2 /* ViewController.swift */,
@@ -70,6 +83,60 @@
 			path = StarWarsApp;
 			sourceTree = "<group>";
 		};
+		9FB10BB02C58C16A00FDC6E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9FB10BB12C58C17100FDC6E2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9FB10BB42C58C1A300FDC6E2 /* NetworkService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9FB10BB22C58C18000FDC6E2 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		9FB10BB32C58C19500FDC6E2 /* Starships */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Starships;
+			sourceTree = "<group>";
+		};
+		9FB10BB42C58C1A300FDC6E2 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				9FB10BB52C58C1BA00FDC6E2 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		C5E5E1EAE06C6AF8EC3C5122 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA936EC47CC85EA2B32F2350 /* Pods-StarWarsApp.debug.xcconfig */,
+				B3C657C748714389884EF7C1 /* Pods-StarWarsApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ECA37918E7149968AE52665B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07922648DF7AA9FEB86983BD /* Pods_StarWarsApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FB10BAD2C58C13F00FDC6E2 /* Build configuration list for PBXNativeTarget "StarWarsApp" */;
 			buildPhases = (
+				C51D5F1B8A1C3D5D15589876 /* [CP] Check Pods Manifest.lock */,
 				9FB10B922C58C13D00FDC6E2 /* Sources */,
 				9FB10B932C58C13D00FDC6E2 /* Frameworks */,
 				9FB10B942C58C13D00FDC6E2 /* Resources */,
+				BD4E78591FA6763D7B3C21B6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,11 +205,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BD4E78591FA6763D7B3C21B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StarWarsApp/Pods-StarWarsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StarWarsApp/Pods-StarWarsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StarWarsApp/Pods-StarWarsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C51D5F1B8A1C3D5D15589876 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StarWarsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9FB10B922C58C13D00FDC6E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB10BB62C58C1BA00FDC6E2 /* NetworkService.swift in Sources */,
 				9FB10BA42C58C13D00FDC6E2 /* StarWarsApp.xcdatamodeld in Sources */,
 				9FB10B9E2C58C13D00FDC6E2 /* ViewController.swift in Sources */,
 				9FB10B9A2C58C13D00FDC6E2 /* AppDelegate.swift in Sources */,
@@ -291,11 +403,13 @@
 		};
 		9FB10BAE2C58C13F00FDC6E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA936EC47CC85EA2B32F2350 /* Pods-StarWarsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StarWarsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -303,6 +417,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,11 +433,13 @@
 		};
 		9FB10BAF2C58C13F00FDC6E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C657C748714389884EF7C1 /* Pods-StarWarsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StarWarsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,6 +447,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
