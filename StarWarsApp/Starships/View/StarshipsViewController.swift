@@ -33,7 +33,15 @@ class StarshipsViewController: UIViewController {
     
 }
 extension StarshipsViewController:UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailsVc=storyboard?.instantiateViewController(identifier: "detailsVC") as? CharacterDetailsViewController{
+            let detailsViewModel=CharacterDetailsViewModel(character: nil, starship: starshipsViewModel?.getStarships()[indexPath.row], itemType: "starship")
+            detailsVc.characterDetailsViewModel=detailsViewModel
+            detailsVc.modalPresentationStyle = .fullScreen
+            present(detailsVc, animated: true)
+        }
+    }
+   
 }
 extension StarshipsViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

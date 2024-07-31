@@ -34,11 +34,11 @@ class CharactersViewController: UIViewController {
 }
 extension CharactersViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let storyboard=UIStoryboard(name: "Main", bundle: nil)
-        if let characterDetailsVC=storyboard.instantiateViewController(withIdentifier: "characterDetailsVC") as? CharacterDetailsViewController{
-            let selectedCharacterViewModel=CharacterDetailsViewModel(character: charactersViewModel?.getCharactersArr()[indexPath.row])
-            characterDetailsVC.characterDetailsViewModel=selectedCharacterViewModel
-            self.present(characterDetailsVC, animated: true)
+        if let detailsVc=storyboard?.instantiateViewController(withIdentifier: "detailsVC") as? CharacterDetailsViewController{
+            let detailsViewModel=CharacterDetailsViewModel(character: charactersViewModel?.getCharactersArr()[indexPath.row],starship: nil,itemType: "character")
+            detailsVc.characterDetailsViewModel=detailsViewModel
+            detailsVc.modalPresentationStyle = .fullScreen
+            self.present(detailsVc, animated: true)
         }
 
     }
