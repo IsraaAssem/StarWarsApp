@@ -6,3 +6,16 @@
 //
 
 import Foundation
+protocol CharacterDetailsViewModelProtocol{
+    func getCharacter()->Character?
+}
+final class CharacterDetailsViewModel:CharacterDetailsViewModelProtocol{
+    private var character:Character?
+    init(character: Character?) {
+        self.character = character ?? nil
+    }
+    func getCharacter() -> Character? {
+        character
+    }
+    
+}

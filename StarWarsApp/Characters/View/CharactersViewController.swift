@@ -33,7 +33,15 @@ class CharactersViewController: UIViewController {
 
 }
 extension CharactersViewController:UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let storyboard=UIStoryboard(name: "Main", bundle: nil)
+        if let characterDetailsVC=storyboard.instantiateViewController(withIdentifier: "characterDetailsVC") as? CharacterDetailsViewController{
+            let selectedCharacterViewModel=CharacterDetailsViewModel(character: charactersViewModel?.getCharactersArr()[indexPath.row])
+            characterDetailsVC.characterDetailsViewModel=selectedCharacterViewModel
+            self.present(characterDetailsVC, animated: true)
+        }
+
+    }
 }
 extension CharactersViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

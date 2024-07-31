@@ -93,6 +93,33 @@
             </objects>
             <point key="canvasLocation" x="1925.9541984732823" y="347.88732394366201"/>
         </scene>
+        <!--Character Details View Controller-->
+        <scene sceneID="xKJ-kn-1PE">
+            <objects>
+                <viewController storyboardIdentifier="characterDetailsVC" id="eDC-8S-Zmy" customClass="CharacterDetailsViewController" customModule="StarWarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0P7-Hc-IHM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1Q-Lu-WEh">
+                                <rect key="frame" x="97" y="373" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lj8-e5-DqZ"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="characterName" destination="L1Q-Lu-WEh" id="wtY-nr-tTW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24V-1P-za6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2712.2137404580153" y="-12.67605633802817"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dk5-eg-QyK">
             <objects>
