@@ -17,12 +17,13 @@ class StarshipsViewController: UIViewController {
         starshipsTable.registerNib(cell: StarWarTableCell.self)
         starshipsTable.delegate=self
         starshipsTable.dataSource=self
+        self.title="Starships"
         starshipsViewModel=StarshipsViewModel(networkService: NetworkService.shared)
         loadingIndicator.center=view.center
         view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
         starshipsViewModel?.fetchStarships()
-        starshipsViewModel?.bindDataToViewController = { [weak self] in
+        starshipsViewModel?.bindStarshipsToViewController = { [weak self] in
             DispatchQueue.main.async{
                 self?.loadingIndicator.stopAnimating()
                 self?.starshipsTable.reloadData()

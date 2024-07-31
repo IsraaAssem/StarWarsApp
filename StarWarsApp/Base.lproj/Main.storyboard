@@ -17,26 +17,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fz8-Hl-4c6">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fz8-Hl-4c6">
+                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Etf-lL-EdH">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pyw-cZ-XaA"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fz8-Hl-4c6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Dyj-uK-fPX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fz8-Hl-4c6" secondAttribute="bottom" id="Jy8-vT-RNd"/>
+                            <constraint firstItem="Etf-lL-EdH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LfO-CH-sIm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fz8-Hl-4c6" secondAttribute="trailing" id="ThP-Tx-8Ap"/>
+                            <constraint firstItem="fz8-Hl-4c6" firstAttribute="top" secondItem="Etf-lL-EdH" secondAttribute="bottom" id="Z34-8G-MZy"/>
+                            <constraint firstItem="Etf-lL-EdH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="doI-ei-nhH"/>
+                            <constraint firstItem="Etf-lL-EdH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ofX-Xk-iqS"/>
                             <constraint firstItem="fz8-Hl-4c6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vGo-KA-a7f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kXd-zf-jmV"/>
+                    <connections>
+                        <outlet property="charactersTable" destination="fz8-Hl-4c6" id="k7h-cU-pnM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1894" y="-395"/>
+            <point key="canvasLocation" x="1893.8931297709923" y="-395.07042253521126"/>
         </scene>
         <!--Starships-->
         <scene sceneID="Iqo-mS-2rl">
@@ -47,18 +60,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nlI-fk-gVj">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="0.0" y="115" width="393" height="654"/>
                                 <color key="backgroundColor" name="BackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
                             </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="0go-Pc-QSd">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="VOb-a2-PWn" id="bOd-RX-YPv"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ttm-24-cYh"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nlI-fk-gVj" firstAttribute="leading" secondItem="Ttm-24-cYh" secondAttribute="leading" id="Mt3-xf-UHX"/>
+                            <constraint firstItem="0go-Pc-QSd" firstAttribute="trailing" secondItem="Ttm-24-cYh" secondAttribute="trailing" id="Nx1-RI-ia6"/>
                             <constraint firstItem="Ttm-24-cYh" firstAttribute="trailing" secondItem="nlI-fk-gVj" secondAttribute="trailing" id="YGO-oH-eac"/>
+                            <constraint firstItem="0go-Pc-QSd" firstAttribute="top" secondItem="Ttm-24-cYh" secondAttribute="top" id="ZDU-8n-qjj"/>
+                            <constraint firstItem="nlI-fk-gVj" firstAttribute="top" secondItem="0go-Pc-QSd" secondAttribute="bottom" id="azW-jm-KNX"/>
+                            <constraint firstItem="0go-Pc-QSd" firstAttribute="leading" secondItem="Ttm-24-cYh" secondAttribute="leading" id="bci-22-KCS"/>
                             <constraint firstItem="Ttm-24-cYh" firstAttribute="bottom" secondItem="nlI-fk-gVj" secondAttribute="bottom" id="hhs-lW-fWL"/>
-                            <constraint firstItem="nlI-fk-gVj" firstAttribute="top" secondItem="Ttm-24-cYh" secondAttribute="top" id="udV-uI-PJo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Starships" image="square.split.2x1.fill" catalog="system" id="EqQ-cG-NUL"/>
@@ -68,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5H-ZI-Pu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="348"/>
+            <point key="canvasLocation" x="1925.9541984732823" y="347.88732394366201"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dk5-eg-QyK">
@@ -111,6 +134,7 @@
             <point key="canvasLocation" x="1031.2977099236641" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="BackgroundColor"/>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.split.2x1.fill" catalog="system" width="128" height="114"/>
