@@ -43,8 +43,11 @@ class CharactersViewController: UIViewController {
             }.store(in: &cancellables)
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        StarWarTableCell.screenName="Characters"
+    }
 }
+
 extension CharactersViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let detailsVc=storyboard?.instantiateViewController(withIdentifier: "detailsVC") as? CharacterDetailsViewController{

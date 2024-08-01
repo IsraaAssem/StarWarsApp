@@ -45,7 +45,9 @@ class StarshipsViewController: UIViewController {
             self?.starshipsTable.reloadData()
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        StarWarTableCell.screenName="Starships"
+    }
 }
 
 extension StarshipsViewController:UITableViewDelegate{
