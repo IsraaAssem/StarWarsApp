@@ -10,20 +10,24 @@ protocol CharactersViewModelProtocol{
     func getCharactersArr()->[Character]
     func getCharactersCount()->Int
     var bindCharactersToViewController:()->Void{get set}
+    var updateTable:()->Void{get set}
     func fetchCharacters()->Void
+    func filterCharacters(by searchText:String)->Void
 }
 final class CharactersViewModel:CharactersViewModelProtocol{
-    private var charactersArr=[Character]()
+    private var allCharacters=[Character]()
+    private var filteredCharacters=[Character]()
     private let networkService:NetworkServiceProtocol?
+    var updateTable: () -> Void={}
     init(networkService:NetworkServiceProtocol){
         self.networkService=networkService
     }
     func getCharactersArr() -> [Character] {
-        charactersArr
+        filteredCharacters
     }
     
     func getCharactersCount() -> Int {
-        charactersArr.count
+        filteredCharacters.count
     }
     
     var bindCharactersToViewController: () -> Void={}
@@ -33,10 +37,21 @@ final class CharactersViewModel:CharactersViewModelProtocol{
             switch result{
                 case .success(let data):
                     self?.bindCharactersToViewController()
-                    self?.charactersArr=data.results ?? []
+                    self?.allCharacters=data.results ?? []
+                    self?.filteredCharacters=self?.allCharacters ?? []
                 case .failure(let error):
                     print(error)
             }
         })
+    }
+    func filterCharacters(by searchText:String)->Void{
+        if searchText.isEmpty{
+            filteredCharacters=allCharacters
+        }else{
+            filteredCharacters=allCharacters.filter{
+                $0.name?.range(of: searchText, options: .caseInsensitive) != nil
+            }
+        }
+        updateTable()
     }
 }

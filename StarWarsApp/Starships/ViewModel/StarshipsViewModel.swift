@@ -12,6 +12,7 @@ protocol StarshipsViewModelProtocol{
     func getStarships()->[Starship]
     func getStarshipsCount()->Int
     var bindStarshipsToViewController:()->Void{get set}
+    var updateTable:()->Void{get set}
     func filterStarships(by searchText:String)->Void
 }
 final class StarshipsViewModel:StarshipsViewModelProtocol{
@@ -22,6 +23,7 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
         self.networkService=networkService
     }
     var bindStarshipsToViewController: () -> Void={}
+    var updateTable: () -> Void={}
     func fetchStarships() {
         networkService.fetchData(from: "starships/") {[weak self] (result:Result<StarshipResponse,NetworkError>) in
             switch result{
@@ -50,6 +52,6 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
                 $0.name?.range(of: searchText, options: .caseInsensitive) != nil
             }
         }
-        bindStarshipsToViewController()
+        updateTable()
     }
 }

@@ -22,6 +22,7 @@ class StarshipsViewController: UIViewController {
         starshipsTable.registerNib(cell: StarWarTableCell.self)
         starshipsTable.delegate=self
         starshipsTable.dataSource=self
+        searchBar.delegate=self
         self.title="Starships"
         starshipsViewModel=StarshipsViewModel(networkService: NetworkService.shared)
         loadingIndicator.center=view.center
@@ -39,6 +40,9 @@ class StarshipsViewController: UIViewController {
                 self?.starshipsTable.reloadData()
                 self?.isLoading=false
             }
+        }
+        starshipsViewModel?.updateTable={[weak self] in
+            self?.starshipsTable.reloadData()
         }
     }
     
@@ -58,22 +62,11 @@ extension StarshipsViewController:UITableViewDelegate{
 extension StarshipsViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if starshipsViewModel?.getStarshipsCount() == 0 && isLoading==false{
-            tableView.backgroundView=getBackgroundView()
+            tableView.backgroundView=getBackgroundView(lottieName: "noResults", viewName: starshipsTable)
         }else{
             tableView.backgroundView=nil
         }
         return starshipsViewModel?.getStarshipsCount() ?? 0
-    }
-    private func getBackgroundView()->UIView{
-        let lottieBackground=LottieAnimationView(name: "noResults")
-        let backgroundView = UIView(frame: starshipsTable.bounds)
-        lottieBackground.contentMode = .scaleAspectFit
-        lottieBackground.frame.size=CGSize(width: view.frame.width/2, height: view.frame.width/2)
-        lottieBackground.center=starshipsTable.center
-        backgroundView.addSubview(lottieBackground)
-        lottieBackground.play()
-        lottieBackground.loopMode = .loop
-        return backgroundView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
