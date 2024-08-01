@@ -9,6 +9,7 @@ import UIKit
 
 class StarWarTableCell: UITableViewCell {
 
+    @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
     weak var delegate: FavoriteButtonDelegate?

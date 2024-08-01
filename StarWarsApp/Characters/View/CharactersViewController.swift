@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Lottie
 class CharactersViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var charactersTable: UITableView!
@@ -15,6 +16,7 @@ class CharactersViewController: UIViewController {
     @Published var searchText=""
     private var isLoading=true
     var cancellables = Set<AnyCancellable>()
+    var favCharactersViewModel:FavCharactersViewModelProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         charactersTable.delegate=self
@@ -41,6 +43,8 @@ class CharactersViewController: UIViewController {
             .sink { [weak self] debouncedSearchText in
                 self?.charactersViewModel?.filterCharacters(by:debouncedSearchText)
             }.store(in: &cancellables)
+        favCharactersViewModel=FavCharactersViewModel(favDao: FavStarWarsDao.shared)
+        favCharactersViewModel.retrieveStoredFavCharacters()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +77,14 @@ extension CharactersViewController:UITableViewDataSource{
         let cell=tableView.dequeueNibCell(cellClass: StarWarTableCell.self)
         cell.nameLabel.text=charactersViewModel?.getCharactersArr()[indexPath.row].name
         cell.delegate=self
+        if favCharactersViewModel.getFavCharactersArr().contains(where: { [weak self]character in
+            character.url == self?.charactersViewModel?.getCharactersArr()[indexPath.row].url}){
+                cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+            }else{
+                cell.favButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+
+            }
         return cell
     }
 }
@@ -85,7 +97,41 @@ extension CharactersViewController:FavoriteButtonDelegate{
     func favoriteButtonTapped(in cell: StarWarTableCell,from button:UIButton) {
         if let cellIndex=charactersTable.indexPath(for: cell)?.row{
             print(charactersViewModel?.getCharactersArr()[cellIndex].name ?? "N/A")
-            //button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            if favCharactersViewModel.getFavCharactersArr().contains(where: { [weak self]character in
+                character.url == self?.charactersViewModel?.getCharactersArr()[cellIndex].url
+            }){
+                let deleteAlert=UIAlertController(title: "Delete Character", message: "Are you sure you want to delete this character from favorites?", preferredStyle: UIAlertController.Style.alert)
+                let deleteAction=UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { [weak self] _ in
+                    self?.favCharactersViewModel.deleteFromFavCharacters(character: (self?.charactersViewModel?.getCharactersArr()[cellIndex])!)
+                    button.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+                    
+                    let animationView = LottieAnimationView(name: "delete")
+                    self?.view.addSubview(animationView)
+                    animationView.contentMode = .scaleAspectFit
+                    animationView.frame.size=CGSize(width: (self?.view.frame.width ?? 400)/2 , height: (self?.view.frame.width ?? 400)/2 )
+                    animationView.center = (self?.view.center)!
+                    animationView.play()
+                    Timer.scheduledTimer(withTimeInterval: 1.25, repeats: false) { _ in
+                        animationView.removeFromSuperview()
+                    }
+                })
+                let cancelAction=UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil)
+                deleteAlert.addAction(deleteAction)
+                deleteAlert.addAction(cancelAction)
+                self.present(deleteAlert, animated: true, completion: nil)
+            }else{
+                favCharactersViewModel.addCharacterToFav(character: (charactersViewModel?.getCharactersArr()[cellIndex])!)
+                button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                let animationView = LottieAnimationView(name: "heart")
+                self.view.addSubview(animationView)
+                animationView.contentMode = .scaleAspectFill
+                animationView.frame.size=CGSize(width: view.frame.width, height: view.frame.width)
+                animationView.center = self.view.center
+                animationView.play()
+                Timer.scheduledTimer(withTimeInterval: 1.25, repeats: false) { _ in
+                    animationView.removeFromSuperview()
+                }
+            }
         }
     }
     

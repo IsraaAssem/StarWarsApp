@@ -60,6 +60,7 @@
             <color key="tintColor" name="MainColor"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="uzh-Yz-Ute" id="gfg-VJ-YCk"/>
+                <outlet property="favButton" destination="BYx-0L-EyF" id="DD6-G0-paG"/>
                 <outlet property="nameLabel" destination="vtH-ah-YXM" id="U8b-sp-ecH"/>
             </connections>
             <point key="canvasLocation" x="131" y="-11"/>
