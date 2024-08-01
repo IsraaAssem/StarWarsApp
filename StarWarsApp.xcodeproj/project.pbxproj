@@ -23,6 +23,7 @@
 		9F61D1762C58D50200C7191A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61D1752C58D50200C7191A /* CustomTabBar.swift */; };
 		9F61D17D2C58DF0C00C7191A /* StarWarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F61D17B2C58DF0C00C7191A /* StarWarTableCell.swift */; };
 		9F61D17E2C58DF0C00C7191A /* StarWarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F61D17C2C58DF0C00C7191A /* StarWarTableCell.xib */; };
+		9F761BC92C5BE43400F2A55B /* FavStarshipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F761BC82C5BE43400F2A55B /* FavStarshipsViewModel.swift */; };
 		9F8E67862C5B85B600F284C8 /* LottieBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E67852C5B85B600F284C8 /* LottieBackgroundView.swift */; };
 		9F9EA16E2C58F70300A48DA4 /* StarshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EA16D2C58F70300A48DA4 /* StarshipsViewController.swift */; };
 		9F9EA1702C58F72F00A48DA4 /* StarshipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EA16F2C58F72F00A48DA4 /* StarshipsViewModel.swift */; };
@@ -54,6 +55,7 @@
 		9F61D1752C58D50200C7191A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		9F61D17B2C58DF0C00C7191A /* StarWarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarTableCell.swift; sourceTree = "<group>"; };
 		9F61D17C2C58DF0C00C7191A /* StarWarTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarWarTableCell.xib; sourceTree = "<group>"; };
+		9F761BC82C5BE43400F2A55B /* FavStarshipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavStarshipsViewModel.swift; sourceTree = "<group>"; };
 		9F8E67852C5B85B600F284C8 /* LottieBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieBackgroundView.swift; sourceTree = "<group>"; };
 		9F9EA16D2C58F70300A48DA4 /* StarshipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsViewController.swift; sourceTree = "<group>"; };
 		9F9EA16F2C58F72F00A48DA4 /* StarshipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		9F52E2732C59E49800BAFC2E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9F761BC82C5BE43400F2A55B /* FavStarshipsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				9F52E2802C59E6DA00BAFC2E /* StarshipDetailsViewController.swift in Sources */,
 				9F52E2862C59E72400BAFC2E /* CharacterDetailsViewModel.swift in Sources */,
 				9F52E2842C59E70E00BAFC2E /* CharacterDetailsViewController.swift in Sources */,
+				9F761BC92C5BE43400F2A55B /* FavStarshipsViewModel.swift in Sources */,
 				9F9EA16E2C58F70300A48DA4 /* StarshipsViewController.swift in Sources */,
 				9FB10BB62C58C1BA00FDC6E2 /* NetworkService.swift in Sources */,
 				9F52E2702C59E41200BAFC2E /* CharactersViewModel.swift in Sources */,

@@ -61,7 +61,6 @@ struct FavStarWarsDao{
         } catch {
             print("Failed to fetch Characters: \(error)")
         }
-        print(favCharacters)
         return favCharacters
     }
     
@@ -134,7 +133,6 @@ struct FavStarWarsDao{
         } catch {
             print("Failed to fetch Starships: \(error)")
         }
-        print(favStarships)
         return favStarships
     }
     
