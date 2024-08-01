@@ -46,6 +46,7 @@
                     <navigationItem key="navigationItem" id="kXd-zf-jmV"/>
                     <connections>
                         <outlet property="charactersTable" destination="fz8-Hl-4c6" id="k7h-cU-pnM"/>
+                        <outlet property="searchBar" destination="Etf-lL-EdH" id="ZE7-sZ-M2e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,6 +88,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Starships" image="square.split.2x1.fill" catalog="system" id="EqQ-cG-NUL"/>
                     <connections>
+                        <outlet property="searchBar" destination="0go-Pc-QSd" id="bsq-69-XUg"/>
                         <outlet property="starshipsTable" destination="nlI-fk-gVj" id="Cwo-2D-KGx"/>
                     </connections>
                 </viewController>

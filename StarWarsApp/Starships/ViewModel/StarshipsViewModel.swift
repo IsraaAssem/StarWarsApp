@@ -12,9 +12,11 @@ protocol StarshipsViewModelProtocol{
     func getStarships()->[Starship]
     func getStarshipsCount()->Int
     var bindStarshipsToViewController:()->Void{get set}
+    func filterStarships(by searchText:String)->Void
 }
 final class StarshipsViewModel:StarshipsViewModelProtocol{
-    private var starships:[Starship]?
+    private var starships=[Starship]()
+    private var filteredStarships=[Starship]()
     private let networkService:NetworkServiceProtocol
     init(networkService:NetworkServiceProtocol) {
         self.networkService=networkService
@@ -27,17 +29,27 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
                     print(error)
                 case .success(let data):
                     self?.starships=data.results ?? []
+                    self?.filteredStarships=self?.starships ?? []
                     self?.bindStarshipsToViewController()
             }
         }
     }
     
     func getStarships()->[Starship] {
-        return starships ?? []
+        return filteredStarships
     }
     
     func getStarshipsCount() -> Int {
-        return starships?.count ?? 0
+        return filteredStarships.count
     }
-    
+    func filterStarships(by searchText:String)->Void{
+        if searchText.isEmpty{
+            filteredStarships=starships
+        }else{
+            filteredStarships=starships.filter{
+                $0.name?.range(of: searchText, options: .caseInsensitive) != nil
+            }
+        }
+        bindStarshipsToViewController()
+    }
 }

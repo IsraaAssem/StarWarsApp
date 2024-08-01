@@ -6,12 +6,13 @@
 //
 
 import UIKit
-
 class CharactersViewController: UIViewController {
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var charactersTable: UITableView!
     private var charactersViewModel:CharactersViewModelProtocol?
     private let indicator=UIActivityIndicatorView(style: .large)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         charactersTable.delegate=self

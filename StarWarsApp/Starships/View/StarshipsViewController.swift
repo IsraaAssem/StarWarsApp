@@ -7,11 +7,16 @@
 
 import UIKit
 import Lottie
+import Combine
 class StarshipsViewController: UIViewController {
     
     @IBOutlet weak var starshipsTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     private let loadingIndicator=UIActivityIndicatorView(style: .large)
     private var starshipsViewModel:StarshipsViewModelProtocol?=nil
+    @Published var searchText=""
+    var cancellables = Set<AnyCancellable>()
+    private var isLoading=true
     override func viewDidLoad() {
         super.viewDidLoad()
         starshipsTable.registerNib(cell: StarWarTableCell.self)
@@ -23,15 +28,22 @@ class StarshipsViewController: UIViewController {
         view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
         starshipsViewModel?.fetchStarships()
+        $searchText.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] debouncedSearchText in
+                self?.starshipsViewModel?.filterStarships(by:debouncedSearchText)
+            }.store(in: &cancellables)
         starshipsViewModel?.bindStarshipsToViewController = { [weak self] in
             DispatchQueue.main.async{
                 self?.loadingIndicator.stopAnimating()
                 self?.starshipsTable.reloadData()
+                self?.isLoading=false
             }
         }
     }
     
 }
+
 extension StarshipsViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let detailsVc=storyboard?.instantiateViewController(identifier: "detailsVC") as? CharacterDetailsViewController{
@@ -45,9 +57,25 @@ extension StarshipsViewController:UITableViewDelegate{
 }
 extension StarshipsViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        starshipsViewModel?.getStarshipsCount() ?? 0
+        if starshipsViewModel?.getStarshipsCount() == 0 && isLoading==false{
+            tableView.backgroundView=getBackgroundView()
+        }else{
+            tableView.backgroundView=nil
+        }
+        return starshipsViewModel?.getStarshipsCount() ?? 0
     }
-    
+    private func getBackgroundView()->UIView{
+        let lottieBackground=LottieAnimationView(name: "noResults")
+        let backgroundView = UIView(frame: starshipsTable.bounds)
+        lottieBackground.contentMode = .scaleAspectFit
+        lottieBackground.frame.size=CGSize(width: view.frame.width/2, height: view.frame.width/2)
+        lottieBackground.center=starshipsTable.center
+        backgroundView.addSubview(lottieBackground)
+        lottieBackground.play()
+        lottieBackground.loopMode = .loop
+        return backgroundView
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueNibCell(cellClass: StarWarTableCell.self) 
         cell.nameLabel.text=starshipsViewModel?.getStarships()[indexPath.row].name
@@ -55,4 +83,9 @@ extension StarshipsViewController:UITableViewDataSource{
     }
     
     
+}
+extension StarshipsViewController:UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText=searchText
+    }
 }
