@@ -72,6 +72,7 @@ extension CharactersViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueNibCell(cellClass: StarWarTableCell.self)
         cell.nameLabel.text=charactersViewModel?.getCharactersArr()[indexPath.row].name
+        cell.delegate=self
         return cell
     }
 }
@@ -79,4 +80,14 @@ extension CharactersViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchText=searchText
     }
+}
+extension CharactersViewController:FavoriteButtonDelegate{
+    func favoriteButtonTapped(in cell: StarWarTableCell,from button:UIButton) {
+        if let cellIndex=charactersTable.indexPath(for: cell)?.row{
+            print(charactersViewModel?.getCharactersArr()[cellIndex].name ?? "N/A")
+            //button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+    }
+    
+    
 }

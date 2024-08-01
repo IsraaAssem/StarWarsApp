@@ -11,7 +11,7 @@ class StarWarTableCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cellBackgroundView: UIView!
-    
+    weak var delegate: FavoriteButtonDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.cellBackgroundView.layer.cornerRadius=10
@@ -27,5 +27,10 @@ class StarWarTableCell: UITableViewCell {
     
     @IBAction func favBtnPressed(_ sender: UIButton) {
         print(StarWarTableCell.screenName)
+        delegate?.favoriteButtonTapped(in: self,from:sender)
     }
+    
+}
+protocol FavoriteButtonDelegate: AnyObject {
+    func favoriteButtonTapped(in cell: StarWarTableCell,from button:UIButton)
 }
