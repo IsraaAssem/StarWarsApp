@@ -11,13 +11,16 @@ protocol CharactersViewModelProtocol{
     func getCharactersCount()->Int
     var bindCharactersToViewController:()->Void{get set}
     var updateTable:()->Void{get set}
-    func fetchCharacters()->Void
+    func fetchCharacters(pageNumber:Int)->Void
     func filterCharacters(by searchText:String)->Void
+    func setCurrentPage(pageNum:Int)->Void
+    func getCurrentPage()->Int
 }
 final class CharactersViewModel:CharactersViewModelProtocol{
     private var allCharacters=[Character]()
     private var filteredCharacters=[Character]()
     private let networkService:NetworkServiceProtocol?
+    private var currentPage=1
     var updateTable: () -> Void={}
     init(networkService:NetworkServiceProtocol){
         self.networkService=networkService
@@ -32,17 +35,19 @@ final class CharactersViewModel:CharactersViewModelProtocol{
     
     var bindCharactersToViewController: () -> Void={}
     
-    func fetchCharacters(){
-        networkService?.fetchData(from: "people/", completion: { [weak self](result:Result<CharactersResponse,NetworkError>) in
+    func fetchCharacters(pageNumber:Int){
+        networkService?.fetchData(from: "people/?page=\(pageNumber)", completion: { [weak self](result:Result<CharactersResponse,NetworkError>) in
             switch result{
                 case .success(let data):
-                    self?.bindCharactersToViewController()
-                    self?.allCharacters=data.results ?? []
                     self?.filteredCharacters=self?.allCharacters ?? []
+                    self?.allCharacters.append( contentsOf: data.results ?? [] )
+                    self?.currentPage=pageNumber
+                    self?.bindCharactersToViewController()
                 case .failure(let error):
                     print(error)
             }
         })
+        print("Page num: \(pageNumber)")
     }
     func filterCharacters(by searchText:String)->Void{
         if searchText.isEmpty{
@@ -59,5 +64,11 @@ final class CharactersViewModel:CharactersViewModelProtocol{
             })
         }
         updateTable()
+    }
+    func setCurrentPage(pageNum:Int)->Void{
+        currentPage=pageNum
+    }
+    func getCurrentPage()->Int{
+        currentPage
     }
 }

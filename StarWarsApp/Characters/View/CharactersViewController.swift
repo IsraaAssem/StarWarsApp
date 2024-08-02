@@ -30,7 +30,7 @@ class CharactersViewController: UIViewController {
         indicator.center=view.center
         indicator.startAnimating()
         charactersViewModel=CharactersViewModel(networkService: NetworkService.shared)
-        charactersViewModel?.fetchCharacters()
+        charactersViewModel?.fetchCharacters(pageNumber: charactersViewModel?.getCurrentPage() ?? 1)
         charactersViewModel?.bindCharactersToViewController={[weak self] in
             DispatchQueue.main.async{
                 self?.indicator.stopAnimating()
@@ -62,7 +62,7 @@ class CharactersViewController: UIViewController {
                 if path.status == .satisfied {
                     self?.animationView.removeFromSuperview()
                     if self?.isLoading == true{
-                        self?.charactersViewModel?.fetchCharacters()
+                        self?.charactersViewModel?.fetchCharacters(pageNumber: self?.charactersViewModel?.getCurrentPage() ?? 1)
                     }
                 } else {
                     if let self=self{
@@ -86,6 +86,11 @@ extension CharactersViewController:UITableViewDelegate{
             
         }
         
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (charactersViewModel?.getCharactersCount() ?? 0) - 1 && !isLoading {
+            charactersViewModel?.fetchCharacters(pageNumber: (charactersViewModel?.getCurrentPage() ?? 1) + 1)
+               }
     }
 }
 
