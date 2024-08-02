@@ -24,10 +24,8 @@ class StarWarTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    static var screenName:String="Characters"
     
     @IBAction func favBtnPressed(_ sender: UIButton) {
-        print(StarWarTableCell.screenName)
         delegate?.favoriteButtonTapped(in: self,from:sender)
     }
     

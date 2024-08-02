@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import Combine
+import Network
 class StarshipsViewController: UIViewController {
     
     @IBOutlet weak var starshipsTable: UITableView!
@@ -18,6 +19,8 @@ class StarshipsViewController: UIViewController {
     var cancellables = Set<AnyCancellable>()
     private var isLoading=true
     var favStarshipsViewModel:FavStarshipsViewModelProtocol!
+    private let animationView = LottieAnimationView(name: "noInternet")
+    private let monitor = NWPathMonitor()
     override func viewDidLoad() {
         super.viewDidLoad()
         starshipsTable.registerNib(cell: StarWarTableCell.self)
@@ -47,6 +50,30 @@ class StarshipsViewController: UIViewController {
         }
         favStarshipsViewModel=FavStarshipsViewModel(favDao: FavStarWarsDao.shared)
         favStarshipsViewModel.retrieveStoredFavStarships()
+        animationView.frame = view.bounds
+        animationView.frame.size=CGSize(width: view.frame.size.width*0.75, height: view.frame.size.width*0.75)
+        animationView.contentMode = .scaleAspectFit
+        animationView.center = view.center
+
+        animationView.loopMode = .loop
+        view.addSubview(animationView)
+        
+        monitor.start(queue: DispatchQueue.global())
+        monitor.pathUpdateHandler = {[weak self] path in
+            DispatchQueue.main.async {
+                if path.status == .satisfied {
+                    self?.animationView.removeFromSuperview()
+                    if self?.isLoading == true{
+                        self?.starshipsViewModel?.fetchStarships()
+                    }
+                } else {
+                    if let self=self{
+                        self.view.addSubview(self.animationView)
+                    }
+                    self?.animationView.play()
+                }
+            }
+        }
     }
 
 }

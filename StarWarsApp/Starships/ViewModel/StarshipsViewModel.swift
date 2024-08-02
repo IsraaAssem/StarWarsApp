@@ -59,6 +59,7 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
                 }
             })
         }
-        updateTable()
+        bindStarshipsToViewController()
+        //updateTable()
     }
 }

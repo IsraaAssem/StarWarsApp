@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import Lottie
+import Network
 class CharactersViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var charactersTable: UITableView!
@@ -17,6 +18,8 @@ class CharactersViewController: UIViewController {
     private var isLoading=true
     var cancellables = Set<AnyCancellable>()
     var favCharactersViewModel:FavCharactersViewModelProtocol!
+    private let animationView = LottieAnimationView(name: "noInternet")
+    private let monitor = NWPathMonitor()
     override func viewDidLoad() {
         super.viewDidLoad()
         charactersTable.delegate=self
@@ -45,11 +48,32 @@ class CharactersViewController: UIViewController {
             }.store(in: &cancellables)
         favCharactersViewModel=FavCharactersViewModel(favDao: FavStarWarsDao.shared)
         favCharactersViewModel.retrieveStoredFavCharacters()
+        animationView.frame = view.bounds
+        animationView.frame.size=CGSize(width: view.frame.size.width*0.75, height: view.frame.size.width*0.75)
+        animationView.contentMode = .scaleAspectFit
+        animationView.center = view.center
+
+        animationView.loopMode = .loop
+        view.addSubview(animationView)
+        
+        monitor.start(queue: DispatchQueue.global())
+        monitor.pathUpdateHandler = {[weak self] path in
+            DispatchQueue.main.async {
+                if path.status == .satisfied {
+                    self?.animationView.removeFromSuperview()
+                    if self?.isLoading == true{
+                        self?.charactersViewModel?.fetchCharacters()
+                    }
+                } else {
+                    if let self=self{
+                        self.view.addSubview(self.animationView)
+                    }
+                    self?.animationView.play()
+                }
+            }
+        }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        StarWarTableCell.screenName="Characters"
-    }
 }
 
 extension CharactersViewController:UITableViewDelegate{
@@ -59,10 +83,12 @@ extension CharactersViewController:UITableViewDelegate{
             detailsVc.characterDetailsViewModel=detailsViewModel
             detailsVc.modalPresentationStyle = .fullScreen
             self.present(detailsVc, animated: true)
+            
         }
-
+        
     }
 }
+
 extension CharactersViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if charactersViewModel?.getCharactersCount() == 0 && isLoading==false{
@@ -79,12 +105,12 @@ extension CharactersViewController:UITableViewDataSource{
         cell.delegate=self
         if favCharactersViewModel.getFavCharactersArr().contains(where: { [weak self]character in
             character.url == self?.charactersViewModel?.getCharactersArr()[indexPath.row].url}){
-                cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-
-            }else{
-                cell.favButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
-
-            }
+            cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            
+        }else{
+            cell.favButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+            
+        }
         return cell
     }
 }
