@@ -8,33 +8,38 @@
 import Foundation
 import Combine
 protocol StarshipsViewModelProtocol{
-    func fetchStarships()->Void
+    func fetchStarships(pageNumber:Int)->Void
     func getStarships()->[Starship]
     func getStarshipsCount()->Int
     var bindStarshipsToViewController:()->Void{get set}
     var updateTable:()->Void{get set}
     func filterStarships(by searchText:String)->Void
+    func setCurrentPage(pageNum:Int)->Void
+    func getCurrentPage()->Int
 }
 final class StarshipsViewModel:StarshipsViewModelProtocol{
     private var starships=[Starship]()
     private var filteredStarships=[Starship]()
     private let networkService:NetworkServiceProtocol
+    private var currentPage=1
     init(networkService:NetworkServiceProtocol) {
         self.networkService=networkService
     }
     var bindStarshipsToViewController: () -> Void={}
     var updateTable: () -> Void={}
-    func fetchStarships() {
-        networkService.fetchData(from: "starships/") {[weak self] (result:Result<StarshipResponse,NetworkError>) in
+    func fetchStarships(pageNumber:Int) {
+        networkService.fetchData(from: "starships/?page=\(pageNumber)") {[weak self] (result:Result<StarshipResponse,NetworkError>) in
             switch result{
                 case .failure(let error):
                     print(error)
                 case .success(let data):
-                    self?.starships=data.results ?? []
+                    self?.starships.append( contentsOf: data.results ?? [] )
                     self?.filteredStarships=self?.starships ?? []
+                    self?.currentPage=pageNumber
                     self?.bindStarshipsToViewController()
             }
         }
+        print("Page num: \(pageNumber)")
     }
     
     func getStarships()->[Starship] {
@@ -44,7 +49,12 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
     func getStarshipsCount() -> Int {
         return filteredStarships.count
     }
-
+    func setCurrentPage(pageNum:Int)->Void{
+        currentPage=pageNum
+    }
+    func getCurrentPage()->Int{
+        currentPage
+    }
     func filterStarships(by searchText:String)->Void{
         if searchText.isEmpty{
             filteredStarships=starships
@@ -59,7 +69,6 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
                 }
             })
         }
-        bindStarshipsToViewController()
-        //updateTable()
+        updateTable()
     }
 }
