@@ -23,21 +23,34 @@
                                 <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Etf-lL-EdH">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="59" width="342.33333333333331" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pyw-cZ-XaA"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Znz-zB-liI">
+                                <rect key="frame" x="350.33333333333331" y="75.333333333333329" width="26.666666666666686" height="23.666666666666671"/>
+                                <color key="tintColor" name="MainColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="heart.fill" catalog="system">
+                                    <color key="titleColor" name="MainColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="allFavCharactersBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WYV-Oe-b93"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="trailing" constant="16" id="9gZ-Ld-Zfu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fz8-Hl-4c6" secondAttribute="bottom" id="Jy8-vT-RNd"/>
                             <constraint firstItem="Etf-lL-EdH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LfO-CH-sIm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fz8-Hl-4c6" secondAttribute="trailing" id="ThP-Tx-8Ap"/>
                             <constraint firstItem="fz8-Hl-4c6" firstAttribute="top" secondItem="Etf-lL-EdH" secondAttribute="bottom" id="Z34-8G-MZy"/>
-                            <constraint firstItem="Etf-lL-EdH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="doI-ei-nhH"/>
+                            <constraint firstItem="Etf-lL-EdH" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="leading" constant="-8" id="doI-ei-nhH"/>
+                            <constraint firstItem="Znz-zB-liI" firstAttribute="centerY" secondItem="Etf-lL-EdH" secondAttribute="centerY" id="mNV-FC-Dj6"/>
                             <constraint firstItem="Etf-lL-EdH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ofX-Xk-iqS"/>
                             <constraint firstItem="fz8-Hl-4c6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vGo-KA-a7f"/>
                         </constraints>
@@ -95,6 +108,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5H-ZI-Pu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1925.9541984732823" y="347.88732394366201"/>
+        </scene>
+        <!--Fav Characters View Controller-->
+        <scene sceneID="nJj-RL-b60">
+            <objects>
+                <viewController storyboardIdentifier="favCharactersVC" id="9jE-K4-zKY" customClass="FavCharactersViewController" customModule="StarWarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lMX-sS-83j">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Characters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fD-H9-qhe">
+                                <rect key="frame" x="56" y="75.666666666666671" width="321" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAI-cr-gKm">
+                                <rect key="frame" x="16" y="75" width="24" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="k0W-9M-ujD"/>
+                                </constraints>
+                                <color key="tintColor" name="MainColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissBtnPressed:" destination="9jE-K4-zKY" eventType="touchUpInside" id="L9e-SH-VcT"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3xU-xU-Sjy">
+                                <rect key="frame" x="0.0" y="112.66666666666669" width="393" height="705.33333333333326"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5rQ-3u-qbq"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5rQ-3u-qbq" firstAttribute="trailing" secondItem="5fD-H9-qhe" secondAttribute="trailing" constant="16" id="0ab-wL-hWH"/>
+                            <constraint firstItem="3xU-xU-Sjy" firstAttribute="leading" secondItem="5rQ-3u-qbq" secondAttribute="leading" id="8Nl-fi-MDC"/>
+                            <constraint firstItem="5rQ-3u-qbq" firstAttribute="trailing" secondItem="3xU-xU-Sjy" secondAttribute="trailing" id="Dmu-p8-Nrz"/>
+                            <constraint firstItem="3xU-xU-Sjy" firstAttribute="top" secondItem="5fD-H9-qhe" secondAttribute="bottom" constant="16" id="GNz-QP-q7e"/>
+                            <constraint firstItem="eAI-cr-gKm" firstAttribute="top" secondItem="5rQ-3u-qbq" secondAttribute="top" constant="16" id="Hkj-7L-5iI"/>
+                            <constraint firstItem="eAI-cr-gKm" firstAttribute="leading" secondItem="5rQ-3u-qbq" secondAttribute="leading" constant="16" id="Qn5-lm-TpD"/>
+                            <constraint firstItem="5rQ-3u-qbq" firstAttribute="bottom" secondItem="3xU-xU-Sjy" secondAttribute="bottom" id="cTp-gm-aYt"/>
+                            <constraint firstItem="5fD-H9-qhe" firstAttribute="centerY" secondItem="eAI-cr-gKm" secondAttribute="centerY" id="dA3-tQ-zry"/>
+                            <constraint firstItem="5fD-H9-qhe" firstAttribute="leading" secondItem="eAI-cr-gKm" secondAttribute="trailing" constant="16" id="sfQ-t3-lpV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="favCharactersTable" destination="3xU-xU-Sjy" id="o9J-NI-Qwy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tx7-hL-RpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2962" y="399"/>
         </scene>
         <!--Character Details View Controller-->
         <scene sceneID="xKJ-kn-1PE">
@@ -261,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24V-1P-za6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2712.2137404580153" y="-12.67605633802817"/>
+            <point key="canvasLocation" x="2775" y="-395"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dk5-eg-QyK">
@@ -288,6 +355,8 @@
     <color key="tintColor" name="BackgroundColor"/>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.split.2x1.fill" catalog="system" width="128" height="114"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

@@ -74,6 +74,13 @@ class CharactersViewController: UIViewController {
         }
     }
 
+    @IBAction func allFavCharactersBtnPressed(_ sender: Any) {
+        let storyboard=UIStoryboard(name: "Main", bundle: nil)
+        let favCharactersVC=storyboard.instantiateViewController(withIdentifier: "favCharactersVC")
+        favCharactersVC.modalPresentationStyle = .fullScreen
+        self.present(favCharactersVC, animated: true)
+    }
+    
 }
 
 extension CharactersViewController:UITableViewDelegate{
