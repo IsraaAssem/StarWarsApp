@@ -54,7 +54,31 @@ extension FavCharactersViewController:UITableViewDelegate{
             self.present(detailsVc, animated: true)
         }
     }
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            let deleteAlert=UIAlertController(title: "Delete Character", message: "Are you sure you want to delete this character from favorites?", preferredStyle: UIAlertController.Style.alert)
+            let deleteAction=UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { [weak self] _ in
+                let character = self?.favCharactersViewModel?.getFavCharactersArr()[indexPath.row ]
+                self?.favCharactersViewModel?.deleteFromFavCharacters(character: character!)
+                self?.favCharactersTable.reloadData()
+                let animationView = LottieAnimationView(name: "delete")
+                self?.view.addSubview(animationView)
+                animationView.contentMode = .scaleAspectFit
+                animationView.frame.size=CGSize(width: (self?.view.frame.width ?? 400)/2 , height: (self?.view.frame.width ?? 400)/2 )
+                animationView.center = (self?.view.center)!
+                animationView.play()
+                Timer.scheduledTimer(withTimeInterval: 1.25, repeats: false) { _ in
+                    animationView.removeFromSuperview()
+                }
+            })
+            let cancelAction=UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil)
+            deleteAlert.addAction(deleteAction)
+            deleteAlert.addAction(cancelAction)
+            self?.present(deleteAlert, animated: true, completion: nil)
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeActions
+    }
 }
 extension FavCharactersViewController:FavoriteButtonDelegate{
     func favoriteButtonTapped(in cell: StarWarTableCell,from button:UIButton) {
