@@ -39,26 +39,86 @@ class CharacterDetailsViewController: UIViewController {
     private func handleCharacterDetails(){
         screenTitle.text="Character Details"
         name.text=characterDetailsViewModel?.getCharacter()?.name
-        gender_modelValue.text=characterDetailsViewModel?.getCharacter()?.gender
-        height_manufacturerValue.text=characterDetailsViewModel?.getCharacter()?.height
-        eyeColor_costValue.text=characterDetailsViewModel?.getCharacter()?.eyeColor
-        skinColor_passengersValue.text=characterDetailsViewModel?.getCharacter()?.skinColor
-        birthYear_crewValue.text=characterDetailsViewModel?.getCharacter()?.birthYear
+        let gender = characterDetailsViewModel?.getCharacter()?.gender?.lowercased()
+        if gender == "unknown" || gender == "n/a"{
+            gender_modelValue.text="Not Available"
+            gender_modelValue.textColor = .red
+        }else{
+            gender_modelValue.text=characterDetailsViewModel?.getCharacter()?.gender
+        }
+        let height = characterDetailsViewModel?.getCharacter()?.height?.lowercased()
+        if height == "unknown" || height == "n/a"{
+            height_manufacturerValue.text="Not Available"
+            height_manufacturerValue.textColor = .red
+        }else{
+            height_manufacturerValue.text=characterDetailsViewModel?.getCharacter()?.height
+        }
+        let eyeColor = characterDetailsViewModel?.getCharacter()?.eyeColor?.lowercased()
+        if eyeColor == "unknown" || eyeColor == "n/a"{
+            eyeColor_costValue.text="Not Available"
+            eyeColor_costValue.textColor = .red
+        }else{
+            eyeColor_costValue.text=characterDetailsViewModel?.getCharacter()?.eyeColor
+        }
+        let skinColor = characterDetailsViewModel?.getCharacter()?.skinColor?.lowercased()
+        if skinColor == "unknown" || skinColor == "n/a"{
+            skinColor_passengersValue.text="Not Available"
+            skinColor_passengersValue.textColor = .red
+        }else{
+            skinColor_passengersValue.text=characterDetailsViewModel?.getCharacter()?.skinColor
+        }
+        let birthYear = characterDetailsViewModel?.getCharacter()?.birthYear?.lowercased()
+        if birthYear == "unknown" || birthYear == "n/a"{
+            birthYear_crewValue.text="Not Available"
+            birthYear_crewValue.textColor = .red
+        }else{
+            birthYear_crewValue.text=characterDetailsViewModel?.getCharacter()?.birthYear
+        }
         
     }
     private func handleStarshipDetails(){
-        screenTitle.text="Starship Details"
-        gender_modelKey.text="Model"
-        height_manufacturerKey.text="Manufacturer"
-        eyeColor_costKey.text="Cost in credits"
-        skinColor_passengersKey.text="Passengers"
-        birthYear_crewKey.text="Crew"
+        screenTitle.text="Starship Details:"
+        gender_modelKey.text="Model:"
+        height_manufacturerKey.text="Manufacturer:"
+        eyeColor_costKey.text="Cost in credits:"
+        skinColor_passengersKey.text="Passengers:"
+        birthYear_crewKey.text="Crew:"
         name.text=characterDetailsViewModel?.getStarship()?.name
-        gender_modelValue.text=characterDetailsViewModel?.getStarship()?.model
-        height_manufacturerValue.text=characterDetailsViewModel?.getStarship()?.manufacturer
-        eyeColor_costValue.text=characterDetailsViewModel?.getStarship()?.costInCredits
-        skinColor_passengersValue.text=characterDetailsViewModel?.getStarship()?.passengers
-        birthYear_crewValue.text=characterDetailsViewModel?.getStarship()?.crew
+        let model = characterDetailsViewModel?.getStarship()?.model?.lowercased()
+        if model == "unknown" || model == "n/a"{
+            gender_modelValue.text="Not Available"
+            gender_modelValue.textColor = .red
+        }else{
+            gender_modelValue.text=characterDetailsViewModel?.getStarship()?.model
+        }
+        let manufacturer = characterDetailsViewModel?.getStarship()?.manufacturer?.lowercased()
+        if manufacturer == "unknown" || manufacturer == "n/a"{
+            height_manufacturerValue.text="Not Available"
+            height_manufacturerValue.textColor = .red
+        }else{
+            height_manufacturerValue.text=characterDetailsViewModel?.getStarship()?.manufacturer
+        }
+        let cost = characterDetailsViewModel?.getStarship()?.costInCredits?.lowercased()
+        if cost == "unknown" || cost == "n/a"{
+            eyeColor_costValue.text="Not Available"
+            eyeColor_costValue.textColor = .red
+        }else{
+            eyeColor_costValue.text=characterDetailsViewModel?.getStarship()?.costInCredits
+        }
+        let passengers = characterDetailsViewModel?.getStarship()?.passengers?.lowercased()
+        if passengers == "unknown" || passengers == "n/a"{
+            skinColor_passengersValue.text="Not Available"
+            skinColor_passengersValue.textColor = .red
+        }else{
+            skinColor_passengersValue.text=characterDetailsViewModel?.getStarship()?.passengers
+        }
+        let crew = characterDetailsViewModel?.getStarship()?.crew?.lowercased()
+        if crew == "unknown" || crew == "n/a"{
+            birthYear_crewValue.text="Not Available"
+            birthYear_crewValue.textColor = .red
+        }else{
+            birthYear_crewValue.text=characterDetailsViewModel?.getStarship()?.crew
+        }
         
     }
     @IBAction func dismissBtnPressed(_ sender: Any) {

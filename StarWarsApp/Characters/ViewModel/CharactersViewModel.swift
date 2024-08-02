@@ -48,9 +48,15 @@ final class CharactersViewModel:CharactersViewModelProtocol{
         if searchText.isEmpty{
             filteredCharacters=allCharacters
         }else{
-            filteredCharacters=allCharacters.filter{
-                $0.name?.range(of: searchText, options: .caseInsensitive) != nil
-            }
+            networkService?.fetchData(from: "people/?search=\(searchText)", completion: { [weak self](result:Result<CharactersResponse,NetworkError>) in
+                switch result{
+                    case .success(let data):
+                        self?.bindCharactersToViewController()
+                        self?.filteredCharacters=data.results ?? []
+                    case .failure(let error):
+                        print(error)
+                }
+            })
         }
         updateTable()
     }

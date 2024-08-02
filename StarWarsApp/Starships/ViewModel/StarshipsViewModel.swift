@@ -44,13 +44,20 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
     func getStarshipsCount() -> Int {
         return filteredStarships.count
     }
+
     func filterStarships(by searchText:String)->Void{
         if searchText.isEmpty{
             filteredStarships=starships
         }else{
-            filteredStarships=starships.filter{
-                $0.name?.range(of: searchText, options: .caseInsensitive) != nil
-            }
+            networkService.fetchData(from: "starships/?search=\(searchText)", completion: { [weak self](result:Result<StarshipResponse,NetworkError>) in
+                switch result{
+                    case .success(let data):
+                        self?.bindStarshipsToViewController()
+                        self?.filteredStarships=data.results ?? []
+                    case .failure(let error):
+                        print(error)
+                }
+            })
         }
         updateTable()
     }
