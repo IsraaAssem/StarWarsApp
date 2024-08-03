@@ -22,3 +22,7 @@ The application allows users to view a list of Star Wars characters and starship
   - Pagination
   - Lottie
   
+![addToFav](https://github.com/user-attachments/assets/335a8f09-cae7-4f01-bd2d-8c63969a6a4d) 
+![StarshipDetails](https://github.com/user-attachments/assets/ac6c1d36-3d18-4785-bd4f-7e9d214bc361)
+![swipeToDeleteFromFav](https://github.com/user-attachments/assets/9e18a159-4d0d-4a1e-87d6-3164a316c5ea)
+![NoInternet](https://github.com/user-attachments/assets/c04a3f4b-f67d-4a32-b36c-737b14691929)
