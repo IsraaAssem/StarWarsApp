@@ -76,6 +76,12 @@ class StarshipsViewController: UIViewController {
         }
     }
 
+    @IBAction func favStarshipsBtnPressed(_ sender: UIButton) {
+        let storyboard=UIStoryboard(name: "Main", bundle: nil)
+        let favCharactersVC=storyboard.instantiateViewController(withIdentifier: "favStarshipsVC")
+        favCharactersVC.modalPresentationStyle = .fullScreen
+        self.present(favCharactersVC, animated: true)
+    }
 }
 
 extension StarshipsViewController:UITableViewDelegate{

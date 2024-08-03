@@ -15,6 +15,7 @@
 		9F313F272C5B1CC500575060 /* noResults.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F313F262C5B1CC500575060 /* noResults.json */; };
 		9F36EA0F2C5D5A2A0052AD78 /* noInternet.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F36EA0E2C5D5A2A0052AD78 /* noInternet.json */; };
 		9F4509572C5D9BEF00ED3F0D /* FavCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4509562C5D9BEF00ED3F0D /* FavCharactersViewController.swift */; };
+		9F4509592C5DAC0400ED3F0D /* FavStarshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4509582C5DAC0400ED3F0D /* FavStarshipsViewController.swift */; };
 		9F52E2702C59E41200BAFC2E /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52E26F2C59E41200BAFC2E /* CharactersViewModel.swift */; };
 		9F52E2782C59E5B800BAFC2E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52E2772C59E5B800BAFC2E /* Character.swift */; };
 		9F52E27E2C59E6B100BAFC2E /* StarshipDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52E27D2C59E6B100BAFC2E /* StarshipDetailsViewModel.swift */; };
@@ -49,6 +50,7 @@
 		9F313F262C5B1CC500575060 /* noResults.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noResults.json; sourceTree = "<group>"; };
 		9F36EA0E2C5D5A2A0052AD78 /* noInternet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noInternet.json; sourceTree = "<group>"; };
 		9F4509562C5D9BEF00ED3F0D /* FavCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCharactersViewController.swift; sourceTree = "<group>"; };
+		9F4509582C5DAC0400ED3F0D /* FavStarshipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavStarshipsViewController.swift; sourceTree = "<group>"; };
 		9F52E26F2C59E41200BAFC2E /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		9F52E2772C59E5B800BAFC2E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9F52E27D2C59E6B100BAFC2E /* StarshipDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		9F52E2742C59E4A700BAFC2E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9F4509582C5DAC0400ED3F0D /* FavStarshipsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				9F8E67862C5B85B600F284C8 /* LottieBackgroundView.swift in Sources */,
 				9F52E27E2C59E6B100BAFC2E /* StarshipDetailsViewModel.swift in Sources */,
 				9F52E2802C59E6DA00BAFC2E /* StarshipDetailsViewController.swift in Sources */,
+				9F4509592C5DAC0400ED3F0D /* FavStarshipsViewController.swift in Sources */,
 				9F52E2862C59E72400BAFC2E /* CharacterDetailsViewModel.swift in Sources */,
 				9F52E2842C59E70E00BAFC2E /* CharacterDetailsViewController.swift in Sources */,
 				9F761BC92C5BE43400F2A55B /* FavStarshipsViewModel.swift in Sources */,

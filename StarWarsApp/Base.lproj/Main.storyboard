@@ -23,19 +23,22 @@
                                 <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Etf-lL-EdH">
-                                <rect key="frame" x="0.0" y="59" width="342.33333333333331" height="56"/>
+                                <rect key="frame" x="0.0" y="59" width="334.33333333333331" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pyw-cZ-XaA"/>
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Znz-zB-liI">
-                                <rect key="frame" x="350.33333333333331" y="75.333333333333329" width="26.666666666666686" height="23.666666666666671"/>
+                                <rect key="frame" x="334.33333333333331" y="70" width="50.666666666666686" height="34.333333333333343"/>
                                 <color key="tintColor" name="MainColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="heart.fill" catalog="system">
                                     <color key="titleColor" name="MainColor"/>
                                 </state>
+                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system">
+                                    <color key="baseForegroundColor" name="MainColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="allFavCharactersBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WYV-Oe-b93"/>
                                 </connections>
@@ -44,12 +47,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="trailing" constant="16" id="9gZ-Ld-Zfu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="trailing" constant="8" id="9gZ-Ld-Zfu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fz8-Hl-4c6" secondAttribute="bottom" id="Jy8-vT-RNd"/>
                             <constraint firstItem="Etf-lL-EdH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LfO-CH-sIm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fz8-Hl-4c6" secondAttribute="trailing" id="ThP-Tx-8Ap"/>
                             <constraint firstItem="fz8-Hl-4c6" firstAttribute="top" secondItem="Etf-lL-EdH" secondAttribute="bottom" id="Z34-8G-MZy"/>
-                            <constraint firstItem="Etf-lL-EdH" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="leading" constant="-8" id="doI-ei-nhH"/>
+                            <constraint firstItem="Etf-lL-EdH" firstAttribute="trailing" secondItem="Znz-zB-liI" secondAttribute="leading" id="doI-ei-nhH"/>
                             <constraint firstItem="Znz-zB-liI" firstAttribute="centerY" secondItem="Etf-lL-EdH" secondAttribute="centerY" id="mNV-FC-Dj6"/>
                             <constraint firstItem="Etf-lL-EdH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ofX-Xk-iqS"/>
                             <constraint firstItem="fz8-Hl-4c6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vGo-KA-a7f"/>
@@ -80,23 +83,35 @@
                                 <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="0go-Pc-QSd">
-                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="59" width="334.33333333333331" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="VOb-a2-PWn" id="bOd-RX-YPv"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBe-qE-wQA">
+                                <rect key="frame" x="334.33333333333331" y="70" width="50.666666666666686" height="34.333333333333343"/>
+                                <color key="tintColor" name="MainColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="heart.fill" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="favStarshipsBtnPressed:" destination="VOb-a2-PWn" eventType="touchUpInside" id="Ooe-L7-Jii"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ttm-24-cYh"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sBe-qE-wQA" firstAttribute="leading" secondItem="0go-Pc-QSd" secondAttribute="trailing" id="0O3-9s-tjP"/>
                             <constraint firstItem="nlI-fk-gVj" firstAttribute="leading" secondItem="Ttm-24-cYh" secondAttribute="leading" id="Mt3-xf-UHX"/>
-                            <constraint firstItem="0go-Pc-QSd" firstAttribute="trailing" secondItem="Ttm-24-cYh" secondAttribute="trailing" id="Nx1-RI-ia6"/>
                             <constraint firstItem="Ttm-24-cYh" firstAttribute="trailing" secondItem="nlI-fk-gVj" secondAttribute="trailing" id="YGO-oH-eac"/>
                             <constraint firstItem="0go-Pc-QSd" firstAttribute="top" secondItem="Ttm-24-cYh" secondAttribute="top" id="ZDU-8n-qjj"/>
                             <constraint firstItem="nlI-fk-gVj" firstAttribute="top" secondItem="0go-Pc-QSd" secondAttribute="bottom" id="azW-jm-KNX"/>
                             <constraint firstItem="0go-Pc-QSd" firstAttribute="leading" secondItem="Ttm-24-cYh" secondAttribute="leading" id="bci-22-KCS"/>
                             <constraint firstItem="Ttm-24-cYh" firstAttribute="bottom" secondItem="nlI-fk-gVj" secondAttribute="bottom" id="hhs-lW-fWL"/>
+                            <constraint firstItem="Ttm-24-cYh" firstAttribute="trailing" secondItem="sBe-qE-wQA" secondAttribute="trailing" constant="8" id="pUp-zX-gyU"/>
+                            <constraint firstItem="sBe-qE-wQA" firstAttribute="centerY" secondItem="0go-Pc-QSd" secondAttribute="centerY" id="uZu-va-vL1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Starships" image="square.split.2x1.fill" catalog="system" id="EqQ-cG-NUL"/>
@@ -161,7 +176,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tx7-hL-RpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2962" y="399"/>
+            <point key="canvasLocation" x="2752" y="348"/>
+        </scene>
+        <!--Fav Starships View Controller-->
+        <scene sceneID="qKb-7v-5Kc">
+            <objects>
+                <viewController storyboardIdentifier="favStarshipsVC" id="4Bc-lw-TQf" customClass="FavStarshipsViewController" customModule="StarWarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cxn-bD-GTv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egf-B7-pwG">
+                                <rect key="frame" x="16" y="75" width="24" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="BlS-mS-DsB"/>
+                                </constraints>
+                                <color key="tintColor" name="MainColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissBtnPressed:" destination="4Bc-lw-TQf" eventType="touchUpInside" id="A9H-iF-v9u"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite starships" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-Gz-D9u">
+                                <rect key="frame" x="56" y="75.666666666666671" width="321" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mqC-10-fY8">
+                                <rect key="frame" x="0.0" y="112.66666666666669" width="393" height="705.33333333333326"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hMk-ku-Nx1"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hMk-ku-Nx1" firstAttribute="bottom" secondItem="mqC-10-fY8" secondAttribute="bottom" id="2hN-le-X0w"/>
+                            <constraint firstItem="hMk-ku-Nx1" firstAttribute="trailing" secondItem="mqC-10-fY8" secondAttribute="trailing" id="5dX-gp-qqN"/>
+                            <constraint firstItem="mqC-10-fY8" firstAttribute="top" secondItem="gXy-Gz-D9u" secondAttribute="bottom" constant="16" id="8MZ-Rs-qga"/>
+                            <constraint firstItem="hMk-ku-Nx1" firstAttribute="trailing" secondItem="gXy-Gz-D9u" secondAttribute="trailing" constant="16" id="DZ7-kz-zvZ"/>
+                            <constraint firstItem="gXy-Gz-D9u" firstAttribute="centerY" secondItem="egf-B7-pwG" secondAttribute="centerY" id="HQN-KO-UL4"/>
+                            <constraint firstItem="egf-B7-pwG" firstAttribute="top" secondItem="hMk-ku-Nx1" secondAttribute="top" constant="16" id="HZT-Xk-n2Y"/>
+                            <constraint firstItem="egf-B7-pwG" firstAttribute="leading" secondItem="hMk-ku-Nx1" secondAttribute="leading" constant="16" id="Vbb-3o-3Ia"/>
+                            <constraint firstItem="gXy-Gz-D9u" firstAttribute="leading" secondItem="egf-B7-pwG" secondAttribute="trailing" constant="16" id="Ygj-PW-Nuy"/>
+                            <constraint firstItem="mqC-10-fY8" firstAttribute="leading" secondItem="hMk-ku-Nx1" secondAttribute="leading" id="oY3-uD-dcw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="favStarshipsTable" destination="mqC-10-fY8" id="SgB-Il-9NT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KK4-f3-iLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3635" y="272"/>
         </scene>
         <!--Character Details View Controller-->
         <scene sceneID="xKJ-kn-1PE">
