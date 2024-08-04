@@ -15,6 +15,7 @@ protocol CharactersViewModelProtocol{
     func filterCharacters(by searchText:String)->Void
     func setCurrentPage(pageNum:Int)->Void
     func getCurrentPage()->Int
+    var showNetworkError:()->Void{get set}
 }
 final class CharactersViewModel:CharactersViewModelProtocol{
     private var allCharacters=[Character]()
@@ -22,8 +23,10 @@ final class CharactersViewModel:CharactersViewModelProtocol{
     private let networkService:NetworkServiceProtocol?
     private var currentPage=1
     var updateTable: () -> Void={}
-    init(networkService:NetworkServiceProtocol){
+    var showNetworkError: () -> Void
+    init(networkService:NetworkServiceProtocol, showNetworkError: @escaping()->Void ){
         self.networkService=networkService
+        self.showNetworkError=showNetworkError
     }
     func getCharactersArr() -> [Character] {
         filteredCharacters
@@ -44,7 +47,8 @@ final class CharactersViewModel:CharactersViewModelProtocol{
                     self?.currentPage=pageNumber
                     self?.bindCharactersToViewController()
                 case .failure(let error):
-                    print(error)
+                    print("Error: \(error)")
+                    self?.showNetworkError()
             }
         })
         print("Page num: \(pageNumber)")
@@ -59,7 +63,8 @@ final class CharactersViewModel:CharactersViewModelProtocol{
                         self?.bindCharactersToViewController()
                         self?.filteredCharacters=data.results ?? []
                     case .failure(let error):
-                        print(error)
+                        print("Error: \(error)")
+                        self?.showNetworkError()
                 }
             })
         }

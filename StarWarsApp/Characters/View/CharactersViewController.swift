@@ -29,7 +29,12 @@ class CharactersViewController: UIViewController {
         view.addSubview(indicator)
         indicator.center=view.center
         indicator.startAnimating()
-        charactersViewModel=CharactersViewModel(networkService: NetworkService.shared)
+        charactersViewModel=CharactersViewModel(networkService: NetworkService.shared){
+            [weak self] in
+            DispatchQueue.main.async{
+                self?.showAlert(errorMessage: "Error in loading data!")
+            }
+        }
         charactersViewModel?.fetchCharacters(pageNumber: charactersViewModel?.getCurrentPage() ?? 1)
         charactersViewModel?.bindCharactersToViewController={[weak self] in
             DispatchQueue.main.async{
@@ -48,14 +53,20 @@ class CharactersViewController: UIViewController {
             }.store(in: &cancellables)
         favCharactersViewModel=FavCharactersViewModel(favDao: FavStarWarsDao.shared)
         favCharactersViewModel.retrieveStoredFavCharacters()
+        
+        setUpNetworkCheckAnimation()
+        handleNetworkCheck()
+    }
+    func setUpNetworkCheckAnimation(){
         animationView.frame = view.bounds
         animationView.frame.size=CGSize(width: view.frame.size.width*0.75, height: view.frame.size.width*0.75)
         animationView.contentMode = .scaleAspectFit
         animationView.center = view.center
-
+        
         animationView.loopMode = .loop
         view.addSubview(animationView)
-        
+    }
+    func handleNetworkCheck(){
         monitor.start(queue: DispatchQueue.global())
         monitor.pathUpdateHandler = {[weak self] path in
             DispatchQueue.main.async {
@@ -73,7 +84,13 @@ class CharactersViewController: UIViewController {
             }
         }
     }
-
+    func showAlert(errorMessage:String){
+        let errorAlert=UIAlertController(title: nil, message: errorMessage, preferredStyle: .actionSheet)
+        self.present(errorAlert, animated: true)
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.dismiss(animated: true)
+        }
+    }
     @IBAction func allFavCharactersBtnPressed(_ sender: Any) {
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
         let favCharactersVC=storyboard.instantiateViewController(withIdentifier: "favCharactersVC")
@@ -97,7 +114,7 @@ extension CharactersViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == (charactersViewModel?.getCharactersCount() ?? 0) - 1 && !isLoading {
             charactersViewModel?.fetchCharacters(pageNumber: (charactersViewModel?.getCurrentPage() ?? 1) + 1)
-               }
+        }
     }
 }
 

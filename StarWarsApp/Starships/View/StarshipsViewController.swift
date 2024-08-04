@@ -28,7 +28,12 @@ class StarshipsViewController: UIViewController {
         starshipsTable.dataSource=self
         searchBar.delegate=self
         self.title="Starships"
-        starshipsViewModel=StarshipsViewModel(networkService: NetworkService.shared)
+        starshipsViewModel=StarshipsViewModel(networkService: NetworkService.shared){
+            [weak self] in
+            DispatchQueue.main.async{
+                self?.showAlert(errorMessage: "Error in loading data!")
+            }
+        }
         loadingIndicator.center=view.center
         view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
@@ -50,14 +55,19 @@ class StarshipsViewController: UIViewController {
         }
         favStarshipsViewModel=FavStarshipsViewModel(favDao: FavStarWarsDao.shared)
         favStarshipsViewModel.retrieveStoredFavStarships()
+        setUpNetworkCheckAnimation()
+        handleNetworkCheck()
+    }
+    func setUpNetworkCheckAnimation(){
         animationView.frame = view.bounds
         animationView.frame.size=CGSize(width: view.frame.size.width*0.75, height: view.frame.size.width*0.75)
         animationView.contentMode = .scaleAspectFit
         animationView.center = view.center
-
+        
         animationView.loopMode = .loop
         view.addSubview(animationView)
-        
+    }
+    func handleNetworkCheck(){
         monitor.start(queue: DispatchQueue.global())
         monitor.pathUpdateHandler = {[weak self] path in
             DispatchQueue.main.async {
@@ -75,7 +85,13 @@ class StarshipsViewController: UIViewController {
             }
         }
     }
-
+    func showAlert(errorMessage:String){
+        let errorAlert=UIAlertController(title: nil, message: errorMessage, preferredStyle: .actionSheet)
+        self.present(errorAlert, animated: true)
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.dismiss(animated: true)
+        }
+    }
     @IBAction func favStarshipsBtnPressed(_ sender: UIButton) {
         let storyboard=UIStoryboard(name: "Main", bundle: nil)
         let favCharactersVC=storyboard.instantiateViewController(withIdentifier: "favStarshipsVC")

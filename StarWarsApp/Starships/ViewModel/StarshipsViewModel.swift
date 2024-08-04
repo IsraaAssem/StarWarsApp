@@ -16,14 +16,17 @@ protocol StarshipsViewModelProtocol{
     func filterStarships(by searchText:String)->Void
     func setCurrentPage(pageNum:Int)->Void
     func getCurrentPage()->Int
+    var showNetworkError:()->Void{ get set}
 }
 final class StarshipsViewModel:StarshipsViewModelProtocol{
     private var starships=[Starship]()
     private var filteredStarships=[Starship]()
     private let networkService:NetworkServiceProtocol
     private var currentPage=1
-    init(networkService:NetworkServiceProtocol) {
+    var showNetworkError:()->Void
+    init(networkService:NetworkServiceProtocol, showNetworkError: @escaping()->Void ){
         self.networkService=networkService
+        self.showNetworkError=showNetworkError
     }
     var bindStarshipsToViewController: () -> Void={}
     var updateTable: () -> Void={}
@@ -32,6 +35,7 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
             switch result{
                 case .failure(let error):
                     print(error)
+                    self?.showNetworkError()
                 case .success(let data):
                     self?.starships.append( contentsOf: data.results ?? [] )
                     self?.filteredStarships=self?.starships ?? []
@@ -66,6 +70,7 @@ final class StarshipsViewModel:StarshipsViewModelProtocol{
                         self?.filteredStarships=data.results ?? []
                     case .failure(let error):
                         print(error)
+                        self?.showNetworkError()
                 }
             })
         }
