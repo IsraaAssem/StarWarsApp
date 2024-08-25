@@ -17,7 +17,7 @@ The application allows users to view a list of Star Wars characters and starship
   - Swift
   - Combine
   - Alamofire
-  - User defaults
+  - CoreData
   - Autolayout
   - Pagination
   - Lottie
